@@ -23,7 +23,11 @@ earlier adventurers. The only exit is to the south."""),
 }
 
 items = {
-    'sword': 
+    'sword': Item("Sword", "Now, this is a sword"),
+    'bag': Item("Bag", "This bag is to hold your items"),
+    'shield': Item("Shield", "This protects you from bad guys"),
+    'torch': Item("Torch", "Use this when it is dark in the cave"),
+    'loot': Item("Loot", "This is your reward"),
 }
 
 # Link rooms together
