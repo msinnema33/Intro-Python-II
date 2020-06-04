@@ -59,10 +59,36 @@ def advgame(u_name):
 
     while True:
         direction = input("Move your character (n,s,e,w) or press q to quit: ").lower().split(" ")
-        if direction[0] in ["n", "s", "e", "w"]:
-            my_player.movement(direction[0])
+        if direction == "q":
+            print("Exiting your adventure, Have a great day")
+            # print("There is nothing in that direction try a different direction")
+            break
+        elif direction != 'n' or 'e' or 'w' or 's':
+            print("You cannot move in that direction - please pick a new one")
+        elif direction == "n":
+            print("You have chosen to move North")
+        elif direction == "s":
+            print("You have chosen to move South")    
+        elif direction == "e":
+            print("You have chosen to move East")
+        elif direction == "w":
+            print("You have chosen to move West")
+        else:
+            print("You cannot move in that direction - please pick a new one")        
+
+# room movement conditionals
+        if my_player.room == "Outside Cave Entrance" and direction == "n":
+            # print{f'{my_player.name} ",moved to a new room"')
+            # my_player.move
+            my_player.room = my_player.room.n_to
+            print(f'{my_player.name} "you are now in the {my_player.room}"')
+        elif my_player.room == "Outside Cave Entrance" and direction != "n":
+            print(f'"You cannot move {direction} from {my_player.room}, choose a different direction') 
+
+        # elif direction[0] in ["n", "s", "e", "w"]:
+        #     my_player.movement(direction[0])
         elif direction[0] =="q":
             print("Exiting your adventure, Have a great day")
             exit()
         else:
-            print("There is nothing in that direction try a different direction")    
+                
