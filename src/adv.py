@@ -49,7 +49,7 @@ items = {
 room['foyer'].items.append(items['torch'])
 room['overlook'].items.append(items['sword'])
 room['outside'].items.append(items['bag'])
-room['loot'].items.append(items['loot'])
+room['treasure'].items.append(items['loot'])
 
 # Main
 
@@ -66,7 +66,7 @@ while True:
 
     direction = input('Enter a direction (n, s, e, w) or enter q to abandon your adventure').lower() 
 
-    if direction in ['n' 's', 'e', 'w']:
+    if direction in ['n', 's', 'e', 'w']:
         user.current_room = user.move_to(direction, user.current_room)
         continue
     elif direction == 'q':
