@@ -73,5 +73,9 @@ while True:
         print('Thank you for playing come back soon adventurer')
         break
     else:
-        print("You provided invalid input - Please try again")    
+        # direction != 'n' or 's' or 'e' or 'w' or 'q':
+        # user.current_room = user.current_room
+        print("You provided invalid input - Please try again") 
+    
+           
 
