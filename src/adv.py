@@ -40,7 +40,7 @@ room['treasure'].s_to = room['narrow']
 items = {
     'sword': Item('sword', 'Use it to slay bad guys'),
     'bag': Item('bag', 'Use it to carry your loot'),
-    'torch': Item('torch', 'Use to see in the dark'),
+    'torch': Item('torch', 'Use it to see in the dark'),
     'loot': Item('loot', "Use it to buy more gear")
 }
 
@@ -60,10 +60,9 @@ user = Player('Bilbo', room['outside'])
 while True:
     print(f"\n\nGreetings {user.name}\nYou are in the: {user.current_room}")
 
-    for txt in textwrap.wrap(user.current_room.print_description()):
+    for txt in textwrap.wrap(user.current_room.print_description(), 35):
         print(f"{txt}\n")
-        print(f"\nItems in the room: {user.current_room.list_items()}")    
-
+        
     direction = input('Enter a direction (n, s, e, w) or enter q to abandon your adventure').lower() 
 
     if direction in ['n', 's', 'e', 'w']:
@@ -73,8 +72,7 @@ while True:
         print('Thank you for playing come back soon adventurer')
         break
     else:
-        # direction != 'n' or 's' or 'e' or 'w' or 'q':
-        # user.current_room = user.current_room
+        direction != 'n' or 's' or 'e' or 'w' or 'q'
         print("You provided invalid input - Please try again") 
     
            
