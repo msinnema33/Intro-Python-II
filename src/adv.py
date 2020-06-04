@@ -59,6 +59,7 @@ def advgame(u_name):
 
     while True:
         direction = input("Move your character (n,s,e,w) or press q to quit: ").lower().split(" ")
+# check for valid direction of movement checks
         if direction == "q":
             print("Exiting your adventure, Have a great day")
             exit()
@@ -77,8 +78,6 @@ def advgame(u_name):
 
 # room movement conditionals for Outside Cave Entrance (north is valid)
         if my_player.room == "Outside Cave Entrance" and direction == "n":
-            # print{f'{my_player.name} ",moved to a new room"')
-            # my_player.move
             my_player.room = my_player.room.n_to
             print(f'{my_player.name} "you are now in the {my_player.room}"')
         elif my_player.room == "Outside Cave Entrance" and direction != "n":
@@ -110,7 +109,6 @@ def advgame(u_name):
             print(f'{my_player.name} "you are now in the {my_player.room}"')
         elif my_player.room == "Grand Overlook" and direction != "n" or "w":
             print(f'"You cannot move {direction} from {my_player.room}, choose a different direction')    
-    # need not valid move conditionals for narrow (south and east)        
 # room movement conditionals for treasure (south is valid)
         elif my_player.room == "Treasure Chamber" and direction == "s":
             my_player.room = my_player.room.s_to
