@@ -76,7 +76,7 @@ def advgame(u_name):
         else:
             print("You cannot move in that direction - please pick a new one")        
 
-# room movement conditionals for Outside Cave Entrance
+# room movement conditionals for Outside Cave Entrance (north is valid)
         if my_player.room == "Outside Cave Entrance" and direction == "n":
             # print{f'{my_player.name} ",moved to a new room"')
             # my_player.move
@@ -84,11 +84,21 @@ def advgame(u_name):
             print(f'{my_player.name} "you are now in the {my_player.room}"')
         elif my_player.room == "Outside Cave Entrance" and direction != "n":
             print(f'"You cannot move {direction} from {my_player.room}, choose a different direction') 
-# room movement conditions for Foyer
+# room movement conditions for Foyer (north, south, east are valid)
         elif my_player.room == 'Foyer' and direction == 'n':
+            player.current_room = my_player.current_room.n_to
         elif my_player.room == 'Foyer' and direction == 's':
-        elif my_player.room == 'Foyer' and direction == 'e':        
+            player.current_room = my_player.current_room.s_to
+        elif my_player.room == 'Foyer' and direction == 'e':
+            player.current_room = my_player.current_room.e_to        
         elif my_player.room == 'Foyer' and direction == 'w':
+            print(f'"You cannot move {direction} from {my_player.room}, choose a different direction') 
+# room movement conditionals for overlook (south is valid)
+        elif my_player.room == "Grand Overlook" and direction == "s":
+            my_player.room = my_player.room.s_to
+            print(f'{my_player.name} "you are now in the {my_player.room}"')
+        elif my_player.room == "Grand Overlook" and direction != "s":
+            print(f'"You cannot move {direction} from {my_player.room}, choose a different direction')
         # elif direction[0] in ["n", "s", "e", "w"]:
         #     my_player.movement(direction[0])
         elif direction[0] =="q":
