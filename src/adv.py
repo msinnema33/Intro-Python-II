@@ -108,6 +108,8 @@ def advgame(u_name):
         elif my_player.room == "Narrow Passage" and direction == 'w':
             my_player.current_room = my_player.current_room.n_to
             print(f'{my_player.name} "you are now in the {my_player.room}"')
+        elif my_player.room == "Grand Overlook" and direction != "n" or "w":
+            print(f'"You cannot move {direction} from {my_player.room}, choose a different direction')    
     # need not valid move conditionals for narrow (south and east)        
 # room movement conditionals for treasure (south is valid)
         elif my_player.room == "Treasure Chamber" and direction == "s":
