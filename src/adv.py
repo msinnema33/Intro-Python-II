@@ -1,4 +1,8 @@
 from room import Room
+from player import Player
+from item import Item
+
+import textwrap
 
 # Declare all the rooms
 
@@ -21,7 +25,6 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -33,19 +36,42 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#
+# Create items
+items = {
+    'sword': Item('sword', 'Use to slay bad guys'),
+    'bag': Item('bag', 'Use to carry your loot'),
+    'torch': Item('torch', 'Use to see in the dark'),
+    'loot': Item('loot', "Use to buy more gear")
+}
+
+# Add items to room
+
+room['foyer'].items.append(items['torch'])
+room['overlook'].items.append(items['sword'])
+room['outside'].items.append(items['bag'])
+room['loot'].items.append(items['loot'])
+
 # Main
-#
 
 # Make a new player object that is currently in the 'outside' room.
+user = Player('Bilbo', room['outside'])
 
 # Write a loop that:
-#
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
+while True:
+    print(f"You are in the: {user.current_room}")
+
+    for txt in textwrap.wrap(user.current_room.print_description()):
+        print(f"{txt}\n")
+    print(f"\nItems in the room: {user.current_room.list_items()}")    
+
+    direction = input('Enter a direction (n, s, e, w) or enter q to abandon your adventure').lower() 
+
+    if direction in ['n' 's', 'e', 'w']:
+        user.current_room = user.move_to(direction, user.current_room)
+        continue
+    elif direction == 'q':
+        print('Thank you for playing come back soon adventurer')
+        break
+    else:
+        print("You provided invalid input - Please try again")    
+
