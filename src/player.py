@@ -2,10 +2,10 @@
 # currently.
 
 class Player:
-    def __init__(self, name, current_room):
+    def __init__(self, name, current_room, inventory: []):
         self.name = name
         self.current_room = current_room
-        self.items = [] 
+        self.inventory = inventory
 
     def move_to(self, movement, current_location):
         attribute  = movement + '_to'
@@ -17,27 +17,26 @@ class Player:
 
             return current_location
 
-    def pickup_item(self, item):
+    def take(self, item):
         if self.current_room.items.count(item) > 0:
-            self.items.append(item)
+            self.inventory.append(item)
             self.current_room.items.remove(item)
-            item.pick_up()
+            # item.pick_up()
         else:
             print(f'A {item.name} is not in this room.')
 
-    def drop_item(self, item):
+    def drop(self, item):
         if self.items.count(item) > 0:
             self.current_room.items.append(item)
-            self.items.remove(item)
-            item.drop()
+            self.inventory.items.remove(item)
+            # item.drop()
         else:
             print(f"You do not have a {item.name} to drop")
 
     def print_items(self):
-        if not self.items:
+        if len(self.inventory) <1:
             print("You do not have any items")
         else:
             print("You have the following items: ")
-            for x in self.items:
+            for x in self.inventory:
                 print(x.name)
-                
