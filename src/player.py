@@ -11,5 +11,4 @@ class Player:
         if move != None:
             self.room = move
             print(self.room)
-        else:
-            print("There is nothing in this direction - try another")      
+        
