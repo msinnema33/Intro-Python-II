@@ -61,7 +61,6 @@ def advgame(u_name):
         direction = input("Move your character (n,s,e,w) or press q to quit: ").lower().split(" ")
         if direction == "q":
             print("Exiting your adventure, Have a great day")
-            # print("There is nothing in that direction try a different direction")
             break
         elif direction != 'n' or 'e' or 'w' or 's':
             print("You cannot move in that direction - please pick a new one")
@@ -86,11 +85,14 @@ def advgame(u_name):
             print(f'"You cannot move {direction} from {my_player.room}, choose a different direction') 
 # room movement conditions for Foyer (north, south, east are valid)
         elif my_player.room == 'Foyer' and direction == 'n':
-            player.current_room = my_player.current_room.n_to
+            my_player.current_room = my_player.current_room.n_to
+            print(f'{my_player.name} "you are now in the {my_player.room}"')
         elif my_player.room == 'Foyer' and direction == 's':
             player.current_room = my_player.current_room.s_to
+            print(f'{my_player.name} "you are now in the {my_player.room}"')
         elif my_player.room == 'Foyer' and direction == 'e':
-            player.current_room = my_player.current_room.e_to        
+            my_player.current_room = my_player.current_room.e_to
+            print(f'{my_player.name} "you are now in the {my_player.room}"')        
         elif my_player.room == 'Foyer' and direction == 'w':
             print(f'"You cannot move {direction} from {my_player.room}, choose a different direction') 
 # room movement conditionals for overlook (south is valid)
@@ -99,6 +101,15 @@ def advgame(u_name):
             print(f'{my_player.name} "you are now in the {my_player.room}"')
         elif my_player.room == "Grand Overlook" and direction != "s":
             print(f'"You cannot move {direction} from {my_player.room}, choose a different direction')
+# room movement conditionals for narrow (west and north are valid)
+        elif my_player.room == "Narrow Passage" and direction == 'n':
+            my_player.current_room = my_player.current_room.n_to
+            print(f'{my_player.name} "you are now in the {my_player.room}"')
+        elif my_player.room == "Narrow Passage" and direction == 'w':
+            my_player.current_room = my_player.current_room.n_to
+            print(f'{my_player.name} "you are now in the {my_player.room}"')
+# room movement conditionals for treasure
+
         # elif direction[0] in ["n", "s", "e", "w"]:
         #     my_player.movement(direction[0])
         elif direction[0] =="q":
