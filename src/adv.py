@@ -38,10 +38,10 @@ room['treasure'].s_to = room['narrow']
 
 # Create items
 items = {
-    'sword': Item('sword', 'Use to slay bad guys'),
-    'bag': Item('bag', 'Use to carry your loot'),
+    'sword': Item('sword', 'Use it to slay bad guys'),
+    'bag': Item('bag', 'Use it to carry your loot'),
     'torch': Item('torch', 'Use to see in the dark'),
-    'loot': Item('loot', "Use to buy more gear")
+    'loot': Item('loot', "Use it to buy more gear")
 }
 
 # Add items to room
@@ -58,11 +58,11 @@ user = Player('Bilbo', room['outside'])
 
 # Write a loop that:
 while True:
-    print(f"You are in the: {user.current_room}")
+    print(f"\n\nGreetings {user.name}\nYou are in the: {user.current_room}")
 
     for txt in textwrap.wrap(user.current_room.print_description()):
         print(f"{txt}\n")
-    print(f"\nItems in the room: {user.current_room.list_items()}")    
+        print(f"\nItems in the room: {user.current_room.list_items()}")    
 
     direction = input('Enter a direction (n, s, e, w) or enter q to abandon your adventure').lower() 
 
