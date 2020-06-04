@@ -53,15 +53,16 @@ my_player = Player(u_name, room["outside"])
 # - Print an error message if the movement isn't allowed.
 #
 # - If the user enters "q", quit the game.
+def advgame(u_name):
 
-print(f"Greetings, {my_player.name} you are at {my_player.room}")
+    print(f"Greetings, {my_player.name} you are at {my_player.room}")
 
-while True:
-    direction = input("Move your character (n,s,e,w) or press q to quit: ").lower().split(" ")
-    if direction[0] in ["n", "s", "e", "w"]:
-        my_player.movement(direction[0])
-    elif direction[0] =="q":
-        print("Exiting your adventure, Have a great day")
-        exit()
-    else:
-        print("You are trying to get lost try a different direction")    
+    while True:
+        direction = input("Move your character (n,s,e,w) or press q to quit: ").lower().split(" ")
+        if direction[0] in ["n", "s", "e", "w"]:
+            my_player.movement(direction[0])
+        elif direction[0] =="q":
+            print("Exiting your adventure, Have a great day")
+            exit()
+        else:
+            print("There is nothing in that direction try a different direction")    
